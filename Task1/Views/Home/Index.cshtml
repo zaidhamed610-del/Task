@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Page</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: darkslategray; 
+      
+    }
+    .form-box {
+      width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color:silver ;
+      border: 2px solid lightblue; 
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid lightgray;
+      outline: none;
+    }
+    input:focus, select:focus {
+      border-color: lightgreen; 
+    }
+    .gender {
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: lightgreen;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: mediumseagreen;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-box">
+  <h2>Registration Form</h2>
+  <form id="regForm">
+    <label>Email</label>
+    <input type="email" id="email" required onmouseover="showHint(this,'Enter your Email')">
+    <label>First Name</label>
+    <input type="text" id="fname" required onmouseover="showHint(this,'Enter your First Name')">
+    <label>Last Name</label>
+    <input type="text" id="lname" required onmouseover="showHint(this,'Enter your Last Name')">
+    <label>Password</label>
+    <input type="password" id="password" required minlength="6" onmouseover="showHint(this,'Enter your Password (min 6 chars, 1 uppercase, 1 number)')">
+    <label>City</label>
+    <input type="text" id="city" required onmouseover="showHint(this,'Enter your City')">
+    <label>Gender</label>
+    
+    
+    
+    <div class="gender" >
+      <input type="radio" name="gender" value="Male"  > Male
+      <input type="radio" name="gender" value="Female"  > Female
+    </div>
+    <label>Study Level</label>
+    <select id="study" required onmouseover="showHint(this,'Select your Study Level')">
+      <option value="">-Select-</option>
+      <option value="BA">BA</option>
+      <option value="Master">Master</option>
+      <option value="PhD">PhD</option>
+    </select>
+    <button type="button" onclick="saveForm()">Save</button>
+  </form>
+</div>
+
+
+
+
+<script>
+  function showHint(e, m) {
+    alert(m);
+    e.onmouseover = null;
+  }
+
+  function saveForm() {
+
+     if (!/^[^\s]+[^\s]+\.[^\s]+$/.test(document.getElementById("email").value)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+    else if (!/^(?=.)(?=.*\d).{6,}$/.test(document.getElementById("password").value)) {
+      alert("Password must be at least 6 characters, contain at least 1 uppercase letter and 1 number.");
+      return;
+    }
+    document.body.style.backgroundColor = "beige";
+    alert("Form saved.");
+  }
+</script>
+</body>
+</html>
+
+
